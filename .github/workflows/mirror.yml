@@ -14,8 +14,8 @@ jobs:
 
       - name: Replace urls
         run: |
-          sed -i -E 's|https://raw\.githubusercontent\.com/Wynntils/WynntilsWebsite-API/[0-9a-z]+|https://bitbucket.org/wynntils/WynntilsWebsite-API/raw/HEAD|g' urls.json maps/maps.json
-          sed -i -E 's|https://raw\.githubusercontent\.com/Wynntils/Reference/[0-9a-z]+|https://bitbucket.org/wynntils/Reference/raw/HEAD|g' urls.json
+          sed -i -E 's|https://raw.githubusercontent.com/Wynntils/WynntilsWebsite-API/[0-9a-z]+|https://gitea.com/wuki/WynntilsWebsite-API/raw/branch/master|g' urls.json maps/maps.json
+          sed -i -E 's|https://raw.githubusercontent.com/Wynntils/Reference/[0-9a-z]+|https://gitea.com/wuki/Reference/raw/branch/main|g' urls.json
 
       - name: Git
         run: |
@@ -24,6 +24,6 @@ jobs:
           git config --global push.default simple
           git add .
           git commit -m “Mirror”
-          git remote add Bitbucket https://${{ secrets.USER_NAME }}:${{ secrets.TOKEN }}@bitbucket.org/wynntils/wynntilswebsite-api
+          git remote add gitea https://${{ secrets.USER_NAME }}:${{ secrets.TOKEN }}@gitea/wuki/wynntilswebsite-api
           git fetch --unshallow
-          git push -f Bitbucket master
+          git push -f gitea master
