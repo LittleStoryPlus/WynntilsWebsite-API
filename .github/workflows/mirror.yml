@@ -24,6 +24,6 @@ jobs:
           git config --global push.default simple
           git add .
           git commit -m “Mirror”
-          git remote add gitea https://${{ secrets.USER_NAME }}:${{ secrets.TOKEN }}@gitea/wuki/wynntilswebsite-api
+          git remote add gitea https://${{ secrets.USER_NAME }}:${{ secrets.TOKEN }}@gitea.com/wuki/wynntilswebsite-api
           git fetch --unshallow
           git push -f gitea master
